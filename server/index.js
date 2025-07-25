@@ -10,6 +10,9 @@ const productRoutes = require('./routes/products');
 const cartRoutes = require('./routes/cart');
 const orderRoutes = require('./routes/orders');
 const adminRoutes = require('./routes/admin');
+const path = require('path')
+
+const currentDir= path.resolve();
 
 const app = express();
 
@@ -30,6 +33,19 @@ app.use('/api/admin', adminRoutes);
 
 // Error handling
 app.use(errorHandler);
+
+// Dev logging middleware
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'))
+}
+
+//production
+if(process.env.NODE_ENV === "production"){
+	app.use(express.static(path.join(currentDir,"/client/dist")));
+	app.get("*",(req,res)=>{
+		res.sendFile(path.resolve(currentDir,"client","dist","index.html"));
+	})
+}
 
 // Start server
 const PORT = process.env.PORT || 5001;
