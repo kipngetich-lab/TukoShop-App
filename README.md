@@ -4,6 +4,10 @@ TukoShop is a name that combines "Tuko"-Swahili for "we're here","Shop"-English 
 
 You can access the application [Live Here](https://tukoshop-app.onrender.com)
 
+Admin login credentials:
+	username: admin
+ 	password: 123456
+
 
 A full-stack marketplace application built with Node.js, Express, MongoDB, React, Vite, and TailwindCSS. This app allows sellers to add products, admins to approve them, and buyers to browse and purchase approved products.
 
